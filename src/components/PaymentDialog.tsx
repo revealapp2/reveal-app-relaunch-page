@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Copy, Bitcoin, Ethereum } from "lucide-react";
+import { Copy, Bitcoin } from "lucide-react";
 import { useCopyToClipboard } from '@/hooks/use-clipboard';
 import { toast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -56,30 +56,19 @@ const PaymentDialog = ({ open, onOpenChange, platform, onPaymentMethodSelect }: 
         
         {!selectedMethod ? (
           <div className="grid grid-cols-3 gap-4 mt-4">
-            <Button
-              variant="outline"
-              className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700"
-              onClick={() => handleMethodSelect('btc')}
-            >
-              <Bitcoin className="h-8 w-8 mb-2 text-orange-500" />
-              <span>BTC</span>
-            </Button>
-            <Button
-              variant="outline"
-              className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700"
-              onClick={() => handleMethodSelect('eth')}
-            >
-              <Ethereum className="h-8 w-8 mb-2 text-blue-500" />
-              <span>ETH</span>
-            </Button>
-            <Button
-              variant="outline"
-              className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700"
-              onClick={() => handleMethodSelect('usdt')}
-            >
-              <span className="text-2xl mb-2 text-green-500">₮</span>
-              <span>USDT</span>
-            </Button>
+            {['btc', 'eth', 'usdt'].map((method) => (
+              <Button
+                key={method}
+                variant="outline"
+                className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700"
+                onClick={() => handleMethodSelect(method)}
+              >
+                {method === 'btc' && <Bitcoin className="h-8 w-8 mb-2" />}
+                {method === 'eth' && <span className="text-2xl mb-2">Ξ</span>}
+                {method === 'usdt' && <span className="text-2xl mb-2">₮</span>}
+                <span>{method.toUpperCase()}</span>
+              </Button>
+            ))}
           </div>
         ) : (
           <div className="space-y-4">

@@ -1,7 +1,7 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Android, Apple } from "lucide-react";
+import { Smartphone } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface PlatformSelectorProps {
@@ -29,7 +29,7 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
             onClick={() => onSelect('android')}
           >
             <div className="rounded-full bg-green-900/30 p-3 mb-3">
-              <Android className="h-8 w-8 text-green-500" />
+              <Smartphone className="h-8 w-8 text-green-500" />
             </div>
             <span className="font-medium">{t('android')}</span>
             <span className="text-xs text-gray-400 mt-1">{t('androidVersion')}</span>
@@ -40,7 +40,7 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
             onClick={() => onSelect('ios')}
           >
             <div className="rounded-full bg-blue-900/30 p-3 mb-3">
-              <Apple className="h-8 w-8 text-blue-500" />
+              <Smartphone className="h-8 w-8 text-blue-500" />
             </div>
             <span className="font-medium">{t('ios')}</span>
             <span className="text-xs text-gray-400 mt-1">{t('iosVersion')}</span>
