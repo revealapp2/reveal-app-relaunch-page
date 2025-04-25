@@ -1,7 +1,6 @@
-
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Apple, Android } from "lucide-react";
+import { Smartphone } from "lucide-react";
 
 interface PlatformSelectorProps {
   open: boolean;
@@ -22,7 +21,7 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
             className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700"
             onClick={() => onSelect('android')}
           >
-            <Android className="h-8 w-8 mb-2" />
+            <Smartphone className="h-8 w-8 mb-2" />
             <span>Android</span>
           </Button>
           <Button
@@ -30,7 +29,7 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
             className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700"
             onClick={() => onSelect('ios')}
           >
-            <Apple className="h-8 w-8 mb-2" />
+            <Smartphone className="h-8 w-8 mb-2" />
             <span>iOS</span>
           </Button>
         </div>

@@ -1,8 +1,7 @@
-
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Bitcoin, Eth } from "lucide-react";
+import { Bitcoin } from "lucide-react";
 import { useCopyToClipboard } from '@/hooks/use-clipboard';
 
 interface PaymentDialogProps {
@@ -55,7 +54,7 @@ const PaymentDialog = ({ open, onOpenChange, platform, onPaymentMethodSelect }: 
                 onClick={() => handleMethodSelect(method)}
               >
                 {method === 'btc' && <Bitcoin className="h-8 w-8 mb-2" />}
-                {method === 'eth' && <Eth className="h-8 w-8 mb-2" />}
+                {method === 'eth' && <span className="text-2xl mb-2">Ξ</span>}
                 {method === 'usdt' && <span className="text-2xl mb-2">₮</span>}
                 <span>{method.toUpperCase()}</span>
               </Button>
@@ -66,7 +65,11 @@ const PaymentDialog = ({ open, onOpenChange, platform, onPaymentMethodSelect }: 
             <p className="text-center font-semibold">Amount: $1500 USD</p>
             <div className="flex justify-center">
               <img 
-                src={`/${selectedMethod}-qr.png`}
+                src={`/lovable-uploads/${
+                  selectedMethod === 'btc' ? 'dd37f898-3a47-4415-bac1-4cefa58e99b1.png' :
+                  selectedMethod === 'eth' ? 'c65b423d-e830-4df6-8ef3-0974329d29ce.png' :
+                  '8243d7f5-4773-4e7d-b313-850e85854acc.png'
+                }`}
                 alt="Payment QR Code"
                 className="w-64 h-64 bg-white p-2 rounded-lg"
               />
