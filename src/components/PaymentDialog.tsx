@@ -1,8 +1,10 @@
+
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Bitcoin } from "lucide-react";
+import { Copy, Bitcoin } from "lucide-react";
 import { useCopyToClipboard } from '@/hooks/use-clipboard';
+import { toast } from '@/hooks/use-toast';
 
 interface PaymentDialogProps {
   open: boolean;
@@ -35,12 +37,33 @@ const PaymentDialog = ({ open, onOpenChange, platform, onPaymentMethodSelect }: 
     }
   };
 
+  const handleCopy = () => {
+    copy(getWalletAddress());
+    toast({
+      title: "Copiado!",
+      description: "Endereço copiado para a área de transferência",
+    });
+  };
+
+  const getQRImagePath = () => {
+    switch (selectedMethod) {
+      case 'btc':
+        return '/lovable-uploads/dd37f898-3a47-4415-bac1-4cefa58e99b1.png';
+      case 'eth':
+        return '/lovable-uploads/c65b423d-e830-4df6-8ef3-0974329d29ce.png';
+      case 'usdt':
+        return '/lovable-uploads/8243d7f5-4773-4e7d-b313-850e85854acc.png';
+      default:
+        return '';
+    }
+  };
+
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md bg-gray-900 text-white border-gray-800">
         <DialogHeader>
           <DialogTitle className="text-center text-xl">
-            {showQR ? `Pay with ${selectedMethod.toUpperCase()}` : 'Select Payment Method'}
+            {showQR ? `Pagar com ${selectedMethod.toUpperCase()}` : 'Selecione o Método de Pagamento'}
           </DialogTitle>
         </DialogHeader>
         
@@ -62,15 +85,11 @@ const PaymentDialog = ({ open, onOpenChange, platform, onPaymentMethodSelect }: 
           </div>
         ) : (
           <div className="space-y-4">
-            <p className="text-center font-semibold">Amount: $1500 USD</p>
+            <p className="text-center font-semibold">Valor: $1500 USD</p>
             <div className="flex justify-center">
               <img 
-                src={`/lovable-uploads/${
-                  selectedMethod === 'btc' ? 'dd37f898-3a47-4415-bac1-4cefa58e99b1.png' :
-                  selectedMethod === 'eth' ? 'c65b423d-e830-4df6-8ef3-0974329d29ce.png' :
-                  '8243d7f5-4773-4e7d-b313-850e85854acc.png'
-                }`}
-                alt="Payment QR Code"
+                src={getQRImagePath()}
+                alt="Código QR para Pagamento"
                 className="w-64 h-64 bg-white p-2 rounded-lg"
               />
             </div>
@@ -84,9 +103,10 @@ const PaymentDialog = ({ open, onOpenChange, platform, onPaymentMethodSelect }: 
               <Button
                 variant="outline"
                 className="border-gray-700"
-                onClick={() => copy(getWalletAddress())}
+                onClick={handleCopy}
               >
-                Copy
+                <Copy className="mr-1" size={16} />
+                Copiar
               </Button>
             </div>
           </div>
