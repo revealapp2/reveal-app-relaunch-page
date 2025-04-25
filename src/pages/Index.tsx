@@ -1,7 +1,8 @@
+
 import { useState } from 'react';
 import { Button } from "@/components/ui/button";
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
-import { Check, Telegram, Instagram } from "lucide-react";
+import { Check, MessageSquare, Instagram } from "lucide-react";
 import HeroSection from '@/components/HeroSection';
 import VideoGallery from '@/components/VideoGallery';
 import PlatformSelector from '@/components/PlatformSelector';
@@ -56,7 +57,7 @@ const Index = () => {
           <div className="flex justify-center gap-6">
             <a href="https://t.me/Bedmalcon_temp" target="_blank" rel="noopener noreferrer"
               className="text-gray-300 hover:text-white transition-colors">
-              <Telegram size={32} />
+              <MessageSquare size={32} />
             </a>
             <a href="https://www.instagram.com/hackpoker_updated" target="_blank" rel="noopener noreferrer"
               className="text-gray-300 hover:text-white transition-colors">
