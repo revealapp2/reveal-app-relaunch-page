@@ -1,11 +1,14 @@
 
 import { Button } from "@/components/ui/button";
+import { useLanguage } from '@/contexts/LanguageContext';
 
 interface HeroSectionProps {
   onGetStarted: () => void;
 }
 
 const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
+  const { t } = useLanguage();
+
   return (
     <div className="relative overflow-hidden bg-gradient-to-b from-gray-900 via-gray-800 to-transparent">
       <div className="absolute inset-0 bg-gradient-to-r from-purple-800/20 to-blue-800/20" />
@@ -23,7 +26,7 @@ const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
               className="bg-gradient-to-r from-purple-600 to-blue-600 hover:from-purple-700 hover:to-blue-700 text-white px-8 py-6 text-lg"
               onClick={onGetStarted}
             >
-              Access Now
+              {t('access')}
             </Button>
             <a
               href="https://t.me/Bedmalcon_temp"
@@ -31,7 +34,7 @@ const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
               rel="noopener noreferrer"
               className="inline-flex items-center justify-center px-8 py-6 text-lg bg-white/10 hover:bg-white/20 text-white rounded-md transition-colors"
             >
-              Contact Support
+              {t('contactSupport')}
             </a>
           </div>
         </div>
