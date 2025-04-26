@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Bitcoin, DollarSign, ArrowUp, Copy, ArrowLeft } from "lucide-react";
+import { Bitcoin, ArrowUp, DollarSign, ArrowLeft, Copy } from "lucide-react";
 import { useCopyToClipboard } from '@/hooks/use-clipboard';
 import { toast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -36,7 +36,7 @@ const PaymentDialog = ({
     toast({
       title: "Address copied",
       description: "Payment address copied to clipboard",
-      variant: "success",
+      variant: "default", // Fixed the variant type
     });
   };
 
@@ -51,9 +51,9 @@ const PaymentDialog = ({
   ];
 
   const paymentAddresses = {
-    btc: "bc1qxy2kgdygjrsqtzq2n0yrf2493p83kkfjhx0wlh",
-    usdt: "0x3f5CE5FBFe3E9af3971dD833D26bA9b5C936f0bE",
-    eth: "0xd8dA6BF26964aF9D7eEd9e03E53415D37aA96045"
+    btc: "bc1qd0l9j7llwxj875e43u8rycnjwvswk6lm4m3p5g",
+    usdt: "TGaJGkXFMLv188ZkWZZrN6LMjzCkbqPggw",
+    eth: "0x172ce7c14952a0bf863ca17e9fb13557af88bfc5"
   };
 
   return (
