@@ -15,7 +15,7 @@ const HeroSection = ({ onGetStarted }: HeroSectionProps) => {
       <div className="container mx-auto px-4 py-20 relative">
         <div className="max-w-4xl mx-auto text-center space-y-8">
           <h1 className="text-4xl md:text-6xl font-bold bg-clip-text text-transparent bg-gradient-to-r from-purple-400 to-blue-400">
-            Reveal App: Dominate PPPOKER and XPoker
+            Reveal App: Dominate PPPOKER, CLUBGG and X-POKER
           </h1>
           <p className="text-xl md:text-2xl text-gray-300">
             The ultimate tool for poker players. Elevate your strategy today!
