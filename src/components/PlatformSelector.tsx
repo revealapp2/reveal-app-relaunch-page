@@ -1,7 +1,7 @@
 
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Smartphone, Apple } from "lucide-react";
+import { Smartphone, Apple, Bitcoin, ChinaIcon, RussiaIcon, VietnamIcon } from "lucide-react";
 import { useLanguage } from '@/contexts/LanguageContext';
 
 interface PlatformSelectorProps {
