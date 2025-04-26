@@ -2,7 +2,7 @@
 import { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Copy, Bitcoin, Ethereum } from "lucide-react";
+import { Copy, Bitcoin, CircleDollarSign } from "lucide-react";
 import { useCopyToClipboard } from '@/hooks/use-clipboard';
 import { toast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -69,7 +69,7 @@ const PaymentDialog = ({ open, onOpenChange, platform, onPaymentMethodSelect }: 
               className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700"
               onClick={() => handleMethodSelect('eth')}
             >
-              <Ethereum className="h-8 w-8 mb-2 text-blue-500" />
+              <CircleDollarSign className="h-8 w-8 mb-2 text-blue-500" />
               <span>ETH</span>
             </Button>
             <Button
