@@ -2,7 +2,7 @@
 import React, { useState } from 'react';
 import { Dialog, DialogContent, DialogHeader, DialogTitle } from "@/components/ui/dialog";
 import { Button } from "@/components/ui/button";
-import { Copy, Bitcoin, ChevronDown, ChevronUp } from "lucide-react";
+import { Bitcoin, DollarSign, ArrowUp } from "lucide-react";
 import { useCopyToClipboard } from '@/hooks/use-clipboard';
 import { toast } from '@/hooks/use-toast';
 import { useLanguage } from '@/contexts/LanguageContext';
@@ -27,19 +27,20 @@ const PaymentDialog = ({
   const handleMethodSelect = (method: string) => {
     setSelectedMethod(method);
     onPaymentMethodSelect(method);
+    onOpenChange(false);
   };
 
   const cryptoMethods = [
     { id: 'btc', name: 'Bitcoin', icon: Bitcoin },
-    { id: 'usdt', name: 'USDT', icon: ChevronUp },
-    { id: 'eth', name: 'Ethereum', icon: ChevronDown }
+    { id: 'usdt', name: 'USDT', icon: ArrowUp },
+    { id: 'eth', name: 'Ethereum', icon: DollarSign }
   ];
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md bg-gray-900 text-white border-gray-800">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl">
+          <DialogTitle className="text-center text-xl text-white">
             {t('selectPaymentMethod')}
           </DialogTitle>
         </DialogHeader>
@@ -49,7 +50,7 @@ const PaymentDialog = ({
             <Button
               key={method.id}
               variant="outline"
-              className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700 hover:border-green-500 transition-all"
+              className="flex flex-col items-center p-6 bg-gray-800 text-white hover:bg-gray-700 border-gray-700 hover:border-green-500 transition-all"
               onClick={() => handleMethodSelect(method.id)}
             >
               <div className="rounded-full bg-green-900/30 p-3 mb-3">

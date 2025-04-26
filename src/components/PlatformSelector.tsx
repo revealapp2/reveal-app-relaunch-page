@@ -27,13 +27,14 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
 
   const handleDevicePlatformSelect = (device: string) => {
     onSelect(`${selectedGame}-${device}`);
+    onOpenChange(false);
   };
 
   return (
     <Dialog open={open} onOpenChange={onOpenChange}>
       <DialogContent className="sm:max-w-md bg-gray-900 text-white border-gray-800">
         <DialogHeader>
-          <DialogTitle className="text-center text-xl">
+          <DialogTitle className="text-center text-xl text-white">
             {selectedGame ? t('selectPlatform') : 'Select Game Platform'}
           </DialogTitle>
           <DialogDescription className="text-center text-gray-400">
@@ -47,7 +48,7 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
               <Button
                 key={game.id}
                 variant="outline"
-                className="flex items-center justify-center p-6 hover:bg-gray-800 border-gray-700 hover:border-green-500 transition-all"
+                className="flex items-center justify-center p-6 bg-gray-800 text-white hover:bg-gray-700 border-gray-700 hover:border-green-500 transition-all"
                 onClick={() => handleGameSelect(game.id)}
               >
                 <span className="font-medium text-lg">{game.name}</span>
@@ -58,7 +59,7 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
           <div className="grid grid-cols-2 gap-4 mt-4">
             <Button
               variant="outline"
-              className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700 hover:border-green-500 transition-all"
+              className="flex flex-col items-center p-6 bg-gray-800 text-white hover:bg-gray-700 border-gray-700 hover:border-green-500 transition-all"
               onClick={() => handleDevicePlatformSelect('android')}
             >
               <div className="rounded-full bg-green-900/30 p-3 mb-3">
@@ -69,7 +70,7 @@ const PlatformSelector = ({ open, onOpenChange, onSelect }: PlatformSelectorProp
             </Button>
             <Button
               variant="outline"
-              className="flex flex-col items-center p-6 hover:bg-gray-800 border-gray-700 hover:border-blue-500 transition-all"
+              className="flex flex-col items-center p-6 bg-gray-800 text-white hover:bg-gray-700 border-gray-700 hover:border-blue-500 transition-all"
               onClick={() => handleDevicePlatformSelect('ios')}
             >
               <div className="rounded-full bg-blue-900/30 p-3 mb-3">
